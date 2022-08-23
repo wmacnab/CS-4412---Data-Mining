@@ -6,7 +6,7 @@ from  bs4 import BeautifulSoup
 def getTitle(url):
     try:
         html = urlopen(url)
-    except HTPTPError as e:
+    except HTTPError as e:
         return None
     try:
         bs = BeautifulSoup(html.read(), 'html.parser')
