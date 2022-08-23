@@ -22,3 +22,6 @@ for name in nameList:
 
 nameList = bs.find_all(text='the prince')
 print(len(nameList))
+
+#4 objects in this library:
+# BeautifulSoup, Tag, NavigableString, Comment
