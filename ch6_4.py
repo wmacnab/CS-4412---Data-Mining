@@ -7,14 +7,23 @@
 
 import pymysql
 
-#conn = pymysql.connect(host='127.0.0.1', unix_socket='/tmp/mysql.sock', user='root', passwd=None, db='mysql')
-conn = pymysql.connect(host='localhost', user='root', password='password', database='db', cursorclass=pymysql.cursors.DictCursor)
+# Creating connection
+conn = pymysql.connect(host='localhost', user='root', password='password', database='db', autocommit=True)#, cursorclass=pymysql.cursors.DictCursor)
 cur = conn.cursor()
-#cur.execute('CREATE TABLE scraping (title Char(50) NULL,body Char(255) NULL,url Char(255) NULL);')
+
+# DBMS interaction with SQL
 cur.execute('USE db')
-cur.execute('DROP TABLE scraping')
-#cur.execute('USE db')
+
+#cur.execute('DROP TABLE pages')
+#cur.execute('CREATE TABLE pages (id bigint(7) NOT NULL AUTO_INCREMENT, title varchar(55) NULL,body varchar(1023) NULL,url varchar(255) NULL, PRIMARY KEY(id));')
+
+#cur.execute('ALTER TABLE pages ADD MyColumn Char(5) NULL')
+cur.execute('INSERT INTO pages (title, url, body) VALUES (\'First\', \'second\', \'third\');')
+#cur.execute('DROP TABLE scraping')
 #cur.execute('SELECT * from SCRAPING')
+cur.execute('SELECT * FROM pages')
+
+# Results and cleanup
 print(cur.fetchone())
 cur.close()
 conn.close()
