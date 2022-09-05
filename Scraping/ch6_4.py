@@ -25,5 +25,6 @@ cur.execute('SELECT * FROM pages')
 
 # Results and cleanup
 print(cur.fetchone())
+#conn.commit()
 cur.close()
 conn.close()
