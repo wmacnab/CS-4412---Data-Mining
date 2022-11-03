@@ -23,5 +23,13 @@ print(soup.prettify())
 
 idk = soup.find_all('h2')
 print(type(idk))
+
 for i in idk:
     print(i)
+    print(i.a.contents[0])
+    print(i.a.get('href'))
+
+
+
+#for i in idk:
+    #print(i.a.attrs[0])
